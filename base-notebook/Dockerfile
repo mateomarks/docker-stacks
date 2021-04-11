@@ -32,12 +32,12 @@ ARG miniforge_arch="aarch64"
 # Package Manager and Python implementation to use (https://github.com/conda-forge/miniforge)
 # - conda only: either Miniforge3 to use Python or Miniforge-pypy3 to use PyPy
 # - conda + mamba: either Mambaforge to use Python or Mambaforge-pypy3 to use PyPy
-ARG miniforge_python="Mambaforge"
+ARG miniforge_python="Miniforge"
 
 # Miniforge archive to install
-ARG miniforge_version="${conda_version}-${miniforge_patch_number}"
+ARG miniforge_version="3"
 # Miniforge installer
-ARG miniforge_installer="${miniforge_python}-${miniforge_version}-Linux-${miniforge_arch}.sh"
+ARG miniforge_installer="${miniforge_python}${miniforge_version}-Linux-${miniforge_arch}.sh"
 # Miniforge checksum
 ARG miniforge_checksum="c56cc2da96043688c6bdb521d825de27754de0a342d5228ba3155cd94532ff75"
 
