@@ -37,7 +37,6 @@ ARG miniforge_python="Miniforge"
 # Miniforge archive to install
 ARG miniforge_version="3"
 # Miniforge installer
-ARG miniforge_installer="${miniforge_python}${miniforge_version}-Linux-${miniforge_arch}.sh"
 # Miniforge checksum
 ARG miniforge_checksum="c56cc2da96043688c6bdb521d825de27754de0a342d5228ba3155cd94532ff75"
 
@@ -105,9 +104,9 @@ RUN mkdir "/home/$NB_USER/work" && \
 WORKDIR /tmp
 
 # Prerequisites installation: conda, mamba, pip, tini
-RUN wget --quiet "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-aarch64.sh" && \
-    /bin/bash "${miniforge_installer}" -f -b -p $CONDA_DIR && \
-    rm "${miniforge_installer}" && \
+RUN wget --quiet "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-aarch64.sh"
+RUN /bin/bash "${miniforge_installer}" -f -b -p $CONDA_DIR
+RUN rm "${miniforge_installer}" && \
     # Conda configuration see https://conda.io/projects/conda/en/latest/configuration.html
     echo "conda ${CONDA_VERSION}" >> $CONDA_DIR/conda-meta/pinned && \
     conda config --system --set auto_update_conda false && \
