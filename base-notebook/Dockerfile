@@ -105,7 +105,6 @@ WORKDIR /tmp
 
 # Prerequisites installation: conda, mamba, pip, tini
 RUN wget --quiet "https://github.com/conda-forge/miniforge/releases/download/${miniforge_version}/${miniforge_installer}" && \
-    echo "${miniforge_checksum} *${miniforge_installer}" | sha256sum --check && \
     /bin/bash "${miniforge_installer}" -f -b -p $CONDA_DIR && \
     rm "${miniforge_installer}" && \
     # Conda configuration see https://conda.io/projects/conda/en/latest/configuration.html
